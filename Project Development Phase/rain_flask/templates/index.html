@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rainfall Predictor</title>
+    <style>
+        body {
+            background-color: rgb(34, 113, 240);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        p {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rainfall Prediction</h1>
+    <form method="POST">
+        <label for="input1">Location</label>
+        <select name="s" id="cityDropdown"></select>
+        <label for="input2">Maximum Temperature(Celsius)</label>
+        <input type="number" name="input2" step="any" required><br>
+        <label for="input3">Sunshine</label>
+        <input type="number" name="input3" step="any" required><br>
+        <label for="input4">Wind Gust Speed</label>
+        <input type="number" name="input4" step="any" required><br>
+        <label for="input5">Humidity at 9am</label>
+        <input type="number" name="input5" step="any" required><br>
+        <label for="input6">Pressure at 3pm</label>
+        <input type="number" name="input6" step="any" required><br>
+        <label for="input7">Cloud at 9am</label>            
+        <input type="number" name="input7" step="any" required><br>
+        <label for="input8">Cloud at 3pm</label>
+        <input type="number" name="input8" step="any" required><br>
+        <input type="submit" value="Predict">
+    </form>
+    <script>
+        const cityMapping= {'Portland':0,'Cairns': 1, 'Walpole': 2, 'Dartmoor': 3, 'MountGambier': 4, 'NorfolkIsland': 5, 'Albany': 6, 'Witchcliffe': 7, 'CoffsHarbour': 8, 'Sydney': 9, 'Darwin': 10, 'MountGinini': 11, 'NorahHead': 12, 'Ballarat': 13, 'GoldCoast': 14, 'SydneyAirport': 15, 'Hobart': 16, 'Watsonia': 17, 'Newcastle': 18, 'Wollongong': 19, 'Brisbane': 20, 'Williamtown': 21, 'Launceston': 22, 'Adelaide': 23, 'MelbourneAirport': 24, 'Perth': 25, 'Sale': 26, 'Melbourne': 27, 'Canberra': 28, 'Albury': 29, 'Penrith': 30, 'Nuriootpa': 31, 'BadgerysCreek': 32, 'Tuggeranong': 33, 'PerthAirport': 34, 'Bendigo': 35, 'Richmond': 36, 'WaggaWagga': 37, 'Townsville': 38, 'PearceRAAF': 39, 'SalmonGums': 40, 'Moree': 41, 'Cobar': 42, 'Mildura': 43, 'Katherine': 44, 'AliceSprings': 45, 'Nhil': 46, 'Woomera': 47, 'Uluru': 48}
+        const cityDropdown = document.getElementById('cityDropdown');
+        for (const city in cityMapping) {
+            const option = document.createElement('option');
+            option.value = cityMapping[city];
+            option.text = city;
+            cityDropdown.appendChild(option);
+        }
+    </script>
+
+    {% if prediction is not none %}
+    <p>
+        Prediction: 
+        {% if prediction == 1 %}
+            It will rain. Carry an Umbrella!
+        {% else %}
+            No rain, Enjoy your Day!
+        {% endif %}
+    </p>
+    {% endif %}
+</body>
+</html>
