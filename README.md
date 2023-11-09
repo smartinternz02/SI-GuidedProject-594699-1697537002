@@ -21,6 +21,9 @@ Fluctuating weather patterns and the need for water resource optimization make a
 2. Install the required dependencies using `pip install -r requirements.txt`.
 3. Run the web application with `python app.py`.
 
+To view a video demo, access this link 'https://drive.google.com/file/d/1fNJ2nFLfUzHBHbFT2Gb_3QRRZGx_kSlw/view?usp=sharing'
+
+
 
 
 
